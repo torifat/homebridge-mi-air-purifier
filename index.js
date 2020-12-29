@@ -69,10 +69,10 @@ function MiAirPurifier(log, config) {
         .on('get', this.getLockPhysicalControls.bind(this))
         .on('set', this.setLockPhysicalControls.bind(this));
 
-    this.service
-        .getCharacteristic(Characteristic.RotationSpeed)
-        .on('get', this.getRotationSpeed.bind(this))
-        .on('set', this.setRotationSpeed.bind(this));
+    // this.service
+    //     .getCharacteristic(Characteristic.RotationSpeed)
+    //     .on('get', this.getRotationSpeed.bind(this))
+    //     .on('set', this.setRotationSpeed.bind(this));
 
     this.serviceInfo = new Service.AccessoryInformation();
 
@@ -323,6 +323,8 @@ MiAirPurifier.prototype = {
             .catch(err => callback(err));
     },
 
+    /*
+    NOTE: this.device.favoriteLevel is not available in v3
     getRotationSpeed: function(callback) {
         if (!this.device) {
             callback(new Error('No Air Purifier is discovered.'));
@@ -360,6 +362,7 @@ MiAirPurifier.prototype = {
             .then(mode => callback(null))
             .catch(err => callback(err));
     },
+    */
 
     getAirQuality: function(callback) {
         if (!this.device) {
